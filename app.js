@@ -35,7 +35,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    title: 'Error',        // Explicitly pass the title here
+    message: err.message,  // Pass the error message
+    error: err             // Pass the full error object
+  });
 });
+
 
 module.exports = app;
